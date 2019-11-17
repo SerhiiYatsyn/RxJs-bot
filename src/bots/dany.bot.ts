@@ -3,12 +3,12 @@ import {delay, map, scan, switchAll, switchMap} from 'rxjs/operators';
 import {interval, pipe} from "rxjs";
 import {messages$} from "../chat";
 
-export const ADD_BOT: Bot = {
+export const DANY_BOT: Bot = {
   name: 'dany',
   description: 'Repeats phrase.'
 };
 
-registry.addBot(ADD_BOT, pipe(
+registry.addBot(DANY_BOT, pipe(
   pipe(
     switchMap(m =>
       interval(1000).pipe(
