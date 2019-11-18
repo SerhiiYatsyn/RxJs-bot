@@ -13,12 +13,16 @@ let jokes: string[] = [
   "Работа программиста и шамана имеет много общего — оба бормочут непонятные слова, совершают непонятные действия и не могут объяснить, как оно работает. \n",
   "Из форума программистов: — Помогитенеработаетпробел!!! — Настоящие_программисты_пробелами_не_пользуются.\n"
 ];
+
 let jokesState: number = 0;
+
 registry.addBot(IMP_BOT,
   pipe(
     throttleTime(5000),
-    map(() => {
-      if (jokesState == 3) jokesState = 0;
-      return jokes[jokesState++]
+    map((command, index) => {
+      if (jokesState == jokes.length) jokesState = 0;
+      if ((index + 1) % 3 == 0) {
+        return jokes[jokesState++];
+      } else return ("drink " + (index + 1) % 3 + " times");
     })
   ));

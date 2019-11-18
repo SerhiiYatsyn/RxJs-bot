@@ -21,3 +21,4 @@ export const messages$: Observable<Message[]> = newMessage$.pipe(
 export function send(message: string) {
   sentMessage$.next(new Message('user', message));
 }
+
